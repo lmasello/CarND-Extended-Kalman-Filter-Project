@@ -48,6 +48,12 @@ void KalmanFilter::UpdateWithRadar(const VectorXd &z) {
    double py = x_(1);
    double vx = x_(2);
    double vy = x_(3);
+   // avoid the undefined atan2(0.0, 0.0) and ZeroDivision
+   const float min_value = 0.00001;
+   if (px < min_value && py < min_value) {
+     px = min_value;
+     py = min_value;
+   }
    double rho = sqrt(px * px + py * py);
    double phi = atan2(py, px);  // values between -pi and pi.
    double rho_dot = (px * vx + py * vy) / rho;
