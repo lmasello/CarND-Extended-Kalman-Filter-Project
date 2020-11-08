@@ -2,6 +2,7 @@
 #define KALMAN_FILTER_H_
 
 #include "Eigen/Dense"
+#include "tools.h"
 
 class KalmanFilter {
  public:
@@ -36,15 +37,21 @@ class KalmanFilter {
 
   /**
    * Updates the state by using standard Kalman Filter equations
-   * @param z The measurement at k+1
+   * @param y The residual of the measurement at k+1
    */
-  void Update(const Eigen::VectorXd &z);
+  void Update(const Eigen::VectorXd &y);
 
   /**
-   * Updates the state by using Extended Kalman Filter equations
+   * Updates the state by using the LIDAR measurement
    * @param z The measurement at k+1
    */
-  void UpdateEKF(const Eigen::VectorXd &z);
+  void UpdateWithLidar(const Eigen::VectorXd &z);
+
+  /**
+   * Updates the state by using the RADAR measurement (Extended Kalman Filter equations)
+   * @param z The measurement at k+1
+   */
+  void UpdateWithRadar(const Eigen::VectorXd &z);
 
   // state vector
   Eigen::VectorXd x_;
@@ -63,6 +70,9 @@ class KalmanFilter {
 
   // measurement covariance matrix
   Eigen::MatrixXd R_;
+
+private:
+    Tools tools;
 };
 
 #endif // KALMAN_FILTER_H_
