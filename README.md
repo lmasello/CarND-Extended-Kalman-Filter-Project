@@ -6,7 +6,7 @@ The goal of the project was to utilize a Kalman filter to estimate the state of 
 [//]: # (Image References)
 [dataset1]: ./output/dataset1.gif "Video of the simulator with the first dataset"
 
-The following GIF shows the simulator using the resulting Kalman filter to track the object. The red circles are LIDAR measurements, the blue circles are radar measurements which also contain an arrow pointing in the direction of the observed angle, and the green triangles are estimation markers.
+The following GIF shows the simulator using the resulting Kalman filter to track the object. The red circles are LIDAR measurements, the blue circles are RADAR measurements which also contain an arrow pointing in the direction of the observed angle, and the green triangles are estimation markers.
 
 ![Video of the simulator with the first dataset][dataset1]
 
